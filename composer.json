@@ -1,0 +1,30 @@
+{
+    "name": "enjoyscms/tinymce6",
+    "description": "Wysiwyg TinyMCE6 for EnjoysCMS",
+    "type": "enjoyscms-wysiwyg",
+    "require": {
+        "php": ">=8.0",
+        "enjoyscms/core": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "EnjoysCMS\\WYSIWYG\\TinyMCE6\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\EnjoysCMS\\WYSIWYG\\TinyMCE6\\": "tests/"
+        }
+    },
+    "extra": {
+        "module-name": "TinyMCE6 WYSIWYG Editor",
+        "use-migrations": false
+    },
+    "scripts": {
+        "post-install-cmd": "EnjoysCMS\\WYSIWYG\\TinyMCE6\\Composer::assetsInstall",
+        "post-update-cmd": "EnjoysCMS\\WYSIWYG\\TinyMCE6\\Composer::assetsInstall"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
