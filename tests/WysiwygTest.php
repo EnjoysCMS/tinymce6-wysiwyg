@@ -26,7 +26,7 @@ class WysiwygTest extends TestCase
      */
     protected function setUp(): void
     {
-        $_ENV['PROJECT_DIR'] = __DIR__;
+        $_ENV['PROJECT_DIR'] = __DIR__.'/_compile';
         $_ENV['PUBLIC_DIR'] = __DIR__.'/_compile';
 
         $DI = new Container(
