@@ -3,8 +3,8 @@
     "description": "Wysiwyg TinyMCE6 for EnjoysCMS",
     "type": "enjoyscms-wysiwyg",
     "require": {
-        "php": ">=8.0",
-        "enjoyscms/core": "^4.0"
+        "php": "^8.0",
+        "enjoyscms/core": "^4.0 <4.8"
     },
     "autoload": {
         "psr-4": {
