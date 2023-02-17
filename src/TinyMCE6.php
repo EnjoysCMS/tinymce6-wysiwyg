@@ -40,7 +40,7 @@ class TinyMCE6 implements ContentEditorInterface
 
     private function getTemplate(): ?string
     {
-        return $this->template ?? __DIR__ . '/template/basic.tpl';
+        return $this->template ?? __DIR__ . '/../template/basic.twig';
     }
 
 
@@ -49,7 +49,7 @@ class TinyMCE6 implements ContentEditorInterface
      */
     private function initialize(): void
     {
-        $path = str_replace(realpath($_ENV['PROJECT_DIR']), '', realpath(__DIR__ . '/../'));
+        $path = str_replace(getenv('ROOT_PATH'), '', realpath(__DIR__ . '/../'));
         AssetsCollector\Helpers::createSymlink(
             sprintf('%s/assets%s/node_modules/tinymce', $_ENV['PUBLIC_DIR'], $path),
             __DIR__ . '/../node_modules/tinymce',
