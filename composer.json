@@ -2,8 +2,8 @@
     "name": "enjoyscms/tinymce6",
     "description": "Wysiwyg TinyMCE6 for EnjoysCMS",
     "require": {
-        "php": "^8.0",
-        "enjoyscms/core": "^4.7"
+        "php": "^8.1",
+        "enjoyscms/core": "^6.0@dev"
     },
     "autoload": {
         "psr-4": {
