@@ -4,8 +4,11 @@
 namespace EnjoysCMS\ContentEditor\TinyMCE6;
 
 use Enjoys\AssetsCollector;
-use EnjoysCMS\Core\Components\ContentEditor\ContentEditorInterface;
+use EnjoysCMS\Core\ContentEditor\ContentEditorInterface;
+use Exception;
 use Psr\Log\LoggerInterface;
+use RuntimeException;
+use Throwable;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -16,7 +19,7 @@ class TinyMCE6 implements ContentEditorInterface
     private ?string $selector = null;
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(
         private Environment $twig,
@@ -29,10 +32,10 @@ class TinyMCE6 implements ContentEditorInterface
             try {
                 $result = passthru($command);
                 if ($result === false) {
-                    throw new \Exception();
+                    throw new Exception();
                 }
-            } catch (\Throwable) {
-                throw new \RuntimeException(sprintf('Run: %s', $command));
+            } catch (Throwable) {
+                throw new RuntimeException(sprintf('Run: %s', $command));
             }
         }
         $this->initialize();
@@ -45,7 +48,7 @@ class TinyMCE6 implements ContentEditorInterface
 
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     private function initialize(): void
     {
@@ -72,7 +75,7 @@ class TinyMCE6 implements ContentEditorInterface
     public function getSelector(): string
     {
         if ($this->selector === null) {
-            throw new \RuntimeException('Selector not set');
+            throw new RuntimeException('Selector not set');
         }
         return $this->selector;
     }
@@ -86,7 +89,7 @@ class TinyMCE6 implements ContentEditorInterface
     {
         $twigTemplate = $this->getTemplate();
         if (!$this->twig->getLoader()->exists($twigTemplate)) {
-            throw new \RuntimeException(
+            throw new RuntimeException(
                 sprintf("ContentEditor: (%s): Нет шаблона в по указанному пути: %s", self::class, $twigTemplate)
             );
         }
