@@ -7,7 +7,8 @@
     },
     "autoload": {
         "psr-4": {
-            "EnjoysCMS\\ContentEditor\\TinyMCE6\\": "src/"
+            "EnjoysCMS\\ContentEditor\\TinyMCE6\\": "src/",
+            "EnjoysCMS\\ContentEditor\\TinyMCE6\\Composer\\Scripts\\": "scripts/"
         }
     },
     "autoload-dev": {
@@ -16,8 +17,15 @@
         }
     },
     "scripts": {
-        "post-install-cmd": "EnjoysCMS\\ContentEditor\\TinyMCE6\\Composer::assetsInstall",
-        "post-update-cmd": "EnjoysCMS\\ContentEditor\\TinyMCE6\\Composer::assetsInstall"
+        "tinymce6-assets-install": "EnjoysCMS\\ContentEditor\\TinyMCE6\\Composer\\Scripts\\AssetsInstallCommand",
+        "post-install-cmd": [
+            "echo -e \"\\x1b[1mTinyMCE 6\\x1b[00m\"",
+            "@tinymce6-assets-install"
+        ],
+        "post-update-cmd": [
+            "echo -e \"\\x1b[1mTinyMCE 6\\x1b[00m\"",
+            "@tinymce6-assets-install"
+        ]
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
